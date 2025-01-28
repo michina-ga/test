@@ -1,4 +1,4 @@
-マークダウンでREADMEをつくる
+ マークダウンでREADMEをつくる
 gitからのclone
 ```
 git clone https://github.com/michina-ga/test
