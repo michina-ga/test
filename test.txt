@@ -10,7 +10,12 @@
 >git config --global user.email "ee33075t@nagaoka-ct.ac.jp"
 >git config --global user.email "michina-ga"
 >git add test.txt
+>git commit -m
 >git remote add origin  https://github.com/michina-ga/test.git
 >git push --set-upstream origin master
 
+
+二回目以降のぷっしゅ
+>git add test.txt
+>git commit -m "pushpush"
 >git push
