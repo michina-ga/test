@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+import numpy as np
 
 def format_number():
     return  float("".join(var["front"]) + "." + "".join(var["back"]) )
@@ -29,6 +30,19 @@ def operator_click(event):
         var["operator"] = event
         var["x_val"] =  format_number()
         clear_click()
+
+def trif(event):
+    global var
+    if event in ["sin"]:
+        var["result"] = np.sin(format_number())
+        update_display(var["result"])
+    if event in ["cos"]:
+        var["result"] = np.cos(format_number())
+        update_display(var["result"])
+    if event in ["tan"]:
+        var["result"] = np.tan(format_number())
+        update_display(var["result"])
+
  
 def clear_click():  
     global var
@@ -44,7 +58,6 @@ def calculate_click():
     var['result'] = eval(str(var['x_val']) + var['operator'] + str(var['y_val']))
     update_display(var["result"]) 
 
-
 #
 # Main 関数
 #
@@ -54,7 +67,8 @@ if __name__ == "__main__":
             [sg.Button("7",key="7",size=(3, 1)),sg.Button("8",key="8",size=(3, 1)), sg.Button("9",key="9",size=(3, 1)), sg.Button("/",key="/",size=(3, 1))], 
             [sg.Button("4",key="4",size=(3, 1)),sg.Button("5",key="5",size=(3, 1)), sg.Button("6",key="6",size=(3, 1)), sg.Button("*",key="*",size=(3, 1))],
             [sg.Button("1",key="1",size=(3, 1)),sg.Button("2",key="2",size=(3, 1)), sg.Button("3",key="3",size=(3, 1)), sg.Button("+",key="+",size=(3, 1))],
-            [sg.Button("0",key="0",size=(3, 1)),sg.Button(".",key=".",size=(3, 1)), sg.Button("-",key="-",size=(3, 1)), sg.Button("calc",key="calc",size=(3, 1))]
+            [sg.Button("0",key="0",size=(3, 1)),sg.Button(".",key=".",size=(3, 1)), sg.Button("-",key="-",size=(3, 1)), sg.Button("calc",key="calc",size=(3, 1))],
+	    [sg.Button("sin",key="sin",size=(3, 1)),sg.Button("cos",key="cos",size=(3, 1)), sg.Button("tan",key="tan",size=(3, 1))]
             ]
     window = sg.Window("簡単電卓",layout,size=(200,200), background_color="#272533",
                     return_keyboard_events=True)
@@ -73,4 +87,5 @@ if __name__ == "__main__":
         number_click(event)
         decimal_click(event)
         operator_click(event) 
+        trif(event)
     window.close()
